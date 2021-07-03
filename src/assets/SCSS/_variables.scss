@@ -1,0 +1,26 @@
+$dark: #111 !important;
+$darker: rgb(71, 71, 71) !important;
+$dark-medium: rgb(5, 3, 87) !important;
+$dark-low: #666 !important;
+$ligth-low: #999 !important;
+$ligth-medium: rgb(211, 208, 208) !important;
+$ligther: #e7cfbf !important;
+$light: rgb(255, 255, 255) !important;
+
+$featured: #da976d !important;
+$featured-light: #fceee6 !important;
+$featured-dark: #985633 !important;
+
+:root {
+  --dark: #{$dark};
+  --darker: #{$darker};
+  --dark-medium: #{$dark-medium};
+  --dark-low: #{$dark-low};
+  --ligth-low: #{$ligth-low};
+  --ligth-medium: #{$ligth-medium};
+  --ligther: #{$ligther};
+  --light: #{$light};
+  --featured: #{$featured};
+  --featured-light: #{$featured-light};
+  --featured-dark: #{$featured-dark};
+}

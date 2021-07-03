@@ -1,0 +1,9 @@
+<template>
+  <div>oi oi</div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style></style>
