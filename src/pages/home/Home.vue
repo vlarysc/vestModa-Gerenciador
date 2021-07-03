@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <Navigation />
-  </div>
+  <LayoutNewProduct />
 </template>
 
 <script>
-import Navigation from "../layout/Navigation.vue";
+import LayoutNewProduct from "../layout/LayoutNewProduct.vue";
 export default {
-  components: {
-    Navigation
-  }
+  components: { LayoutNewProduct }
 };
 </script>
 
-<style></style>
+<style>
+.tes {
+  color: tomato;
+}
+</style>

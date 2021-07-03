@@ -8,19 +8,27 @@ const router = new Router({
     {
       path: "/",
       name: "Home",
-
+      meta: {
+        icon: "home",
+        title: "Home"
+      },
       component: () => import("../pages/home/Home.vue")
     },
     {
-      path: "/lista-gastos",
-      name: "Lista-Gastos",
-
+      path: "/produtos",
+      name: "Produtos",
+      meta: {
+        icon: "list-ul",
+        title: "Produtos"
+      },
       component: () => import("../pages/products/Products.vue")
     },
     {
       path: "/login",
       name: "Login",
-
+      meta: {
+        title: "Login"
+      },
       component: () => import("../pages/login/Login.vue")
     }
   ]

@@ -11,6 +11,7 @@ export default {
     async logout() {
       await this.$firebase.auth().signOut();
       this.$router.push({ name: "Login" });
+      console.log("oi");
     }
   }
 };

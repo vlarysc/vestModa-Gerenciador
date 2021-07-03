@@ -12,6 +12,7 @@
     "bootstrap": "^5.0.2",
     "core-js": "^3.6.5",
     "firebase": "^8.7.0",
+    "v-money": "^0.8.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.2"
   },

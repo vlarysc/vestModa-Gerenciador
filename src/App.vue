@@ -1,11 +1,9 @@
 <template>
   <div id="app">
+    <LayoutNotify />
     <div class="container-fluid" v-if="logado">
       <div class="row">
-        <div class="col-2 navigation-sidebar">
-          <h1 class="app-title">VestModa</h1>
-          <Navigation />
-        </div>
+        <Navigation />
         <div class="col">
           <router-view />
         </div>
@@ -17,11 +15,13 @@
 
 <script>
 import Navigation from "./pages/layout/Navigation.vue";
+import LayoutNotify from "./pages/layout/LayoutNotify.vue";
 
 export default {
   name: "App",
   components: {
-    Navigation
+    Navigation,
+    LayoutNotify
   },
   data() {
     return {
@@ -30,13 +30,20 @@ export default {
   },
   methods: {},
   mounted() {
-    console.log(this.$firebase);
+    this.$firebase.auth().onAuthStateChanged((user) => {
+      window.uid = user ? user.uid : null;
+      this.logado = !!user;
+      this.$router.push({ name: window.uid ? "Home" : "Login" });
+      setTimeout(() => {}, 300);
+    });
   }
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  min-height: 95vh;
+  width: calc(99% + 2px);
+  background-color: var(--light);
 }
 </style>
