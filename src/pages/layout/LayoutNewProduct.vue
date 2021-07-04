@@ -7,9 +7,10 @@
         Novo Produto
       </nobr>
     </button>
+
     <form @submit.prevent="adicionarGasto()">
       <div class="modal fade" :class="{ show: showModal }" :style="{ display: showModal ? 'block' : 'none' }">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLiveLabel">Adicionar um novo produto</h5>
@@ -17,9 +18,13 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class="d-flex form-group col-6">
+                <div class="d-flex form-group col-4">
                   <label for="" class="label-position">Produto:</label>
                   <input type="text" v-model="form.produto" class="form-control" required />
+                </div>
+                <div class="d-flex form-group col-4">
+                  <label for="" class="estoque-width label-position">Estoque:</label>
+                  <input type="text" v-model="form.estoque" class="form-control" required />
                 </div>
                 <div class="d-flex form-group col-4">
                   <label for="" class="label-position">Preço:</label>
@@ -28,18 +33,24 @@
               </div>
 
               <div class="row">
-                <div class="form-group col-5">
+                <div class="form-group col-6">
                   <div class="elements-select">
-                    <label for="" class="label-position label-select">Categoria: </label>
-                    <select class="form-select mt-1" aria-label=".form-select-lg example">
-                      <option selected disabled>Ecolha uma categoria</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
+                    <label class="label-position mt-2 typo__label">Categoria: </label>
+                    <multiselect
+                      v-model="form.categorias"
+                      tag-placeholder="Adicione uma categoria"
+                      placeholder="Pesquisar Categoria"
+                      label="name"
+                      track-by="code"
+                      :options="options"
+                      :multiple="true"
+                      :taggable="true"
+                      @tag="addTag"
+                    ></multiselect>
                   </div>
                 </div>
-                <div class="foto form-group mt-4 col-6 flex-column d-flex align-items-center">
+
+                <div class="foto form-group mt-4 col-5 flex-column d-flex align-items-center">
                   <input type="file" ref="input" class="d-none" @change="lerArquivo($event)" accept="image/*" />
                   <button type="button" @click="openFile()" class="btn w-50 btn-outline-secondary">
                     Foto do Produto
@@ -78,17 +89,29 @@
 
 <script>
 import { Money } from "v-money";
+import Multiselect from "vue-multiselect";
 
 export default {
-  components: { Money },
+  components: {
+    Money,
+    Multiselect
+  },
   data() {
     return {
       loading: false,
       showModal: false,
+
+      options: [
+        { name: "Feminino", code: "vu" },
+        { name: "Masculino", code: "js" },
+        { name: "Infantil", code: "os" }
+      ],
       form: {
-        foto: "",
         produto: "",
-        preco: 0
+        estoque: 0,
+        preco: 0,
+        foto: "",
+        categorias: []
       }
     };
   },
@@ -104,6 +127,14 @@ export default {
     }
   },
   methods: {
+    addTag(newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
+      };
+      this.options.push(tag);
+      this.value.push(tag);
+    },
     lerArquivo(event) {
       this.form.foto = event.target.files[0];
     },
@@ -170,6 +201,7 @@ export default {
 };
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss" scoped>
 .modal {
   color: rgb(32, 29, 29);
@@ -213,5 +245,9 @@ export default {
 
 .foto {
   margin-left: 33px;
+}
+
+.estoque-position {
+  margin-top: 30px;
 }
 </style>
