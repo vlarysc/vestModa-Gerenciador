@@ -56,6 +56,7 @@
                     Foto do Produto
                   </button>
                   <div v-if="form.foto" class="mt-2">
+                    <img src="form.foto.name" class="rounded mx-auto d-block" alt="" />
                     {{ form.foto.name }}
                     <button type="button" class="btn badge badge-light" @click="form.foto = ''">
                       <i class="fa fa-trash text-danger"></i>
