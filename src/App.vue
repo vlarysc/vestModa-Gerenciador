@@ -43,7 +43,7 @@ export default {
 <style lang="scss">
 #app {
   min-height: 95vh;
-  width: calc(99% + 2px);
+  width: calc(98% + 13px);
   background-color: var(--light);
 }
 </style>

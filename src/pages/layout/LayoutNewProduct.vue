@@ -195,7 +195,13 @@ export default {
         });
       } finally {
         this.loading = false;
-        this.$root.$emit("Spinner::hide");
+        this.form = {
+          produto: "",
+          estoque: 0,
+          preco: 0,
+          foto: "",
+          categorias: []
+        };
       }
     }
   }

@@ -3,7 +3,7 @@
     <div class="mb-4">
       <LayoutNewProduct />
     </div>
-    <div>
+    <div class="alinhamentoCentral">
       <span><strong>Catalogo de Produtos</strong></span>
     </div>
     <div v-if="vestModa.length">
@@ -25,7 +25,7 @@
           </div>
           <div class="btn-group">
             <button class="btn-edit">Editar</button>
-            <button class="btn-del">Deletar</button>
+            <button class="btn-del" @click="remover()">Deletar</button>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default {
     };
   },
   mounted() {
-    console.log(this.vestModa);
+    console.log("ops", this.vestModa);
   },
   computed: {
     grupoMeses() {
@@ -99,6 +99,21 @@ export default {
     console.log("hi", this.getDados());
   },
   methods: {
+    remover() {
+      console.log("Remover", this.$firebase);
+      /* let datas = localStorage.getItem("datasApp");
+      if (!datas) return;
+
+      datas = JSON.parse(datas);
+
+      datas = datas.filter((pessoa) => {
+        return pessoa.documento1 != pessoaId;
+      });
+
+      this.addPessoas(datas);
+
+      localStorage.setItem("datasApp", JSON.stringify(datas)); */
+    },
     getDados() {
       const ref = this.$firebase.database().ref(`/${window.uid}`);
       ref.on("value", (data) => {
