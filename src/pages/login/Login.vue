@@ -32,8 +32,8 @@ export default {
   data() {
     return {
       loading: false,
-      email: "",
-      senha: ""
+      email: "manoel@gmail.com",
+      senha: "manoel123"
     };
   },
   methods: {

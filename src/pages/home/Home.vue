@@ -6,35 +6,33 @@
     <div>
       <span><strong>Catalogo de Produtos</strong></span>
     </div>
-    <div v-for="(produto, i) in vestModa" :key="i">
-      <div v-if="vestModa.length">
-        <div class="row">
-          <div class="col-6 home-box">
-            <div class="text-product">
-              <div class="img-container">
-                <img :src="produto.foto" height="180" width="180" alt="" />
-              </div>
-              <div class="row products-container">
-                <small> <strong>Produto: </strong> {{ produto.produto }} </small>
-
-                <small><strong>Estoque: </strong> {{ produto.estoque }} </small>
-
-                <small><strong>Preço: </strong> {{ produto.preco }} </small>
-
-                <small><strong>Categoria: </strong> {{ produto.categorias[0].name }} </small>
-              </div>
+    <div v-if="vestModa.length">
+      <div class="row alinhamentoCentral">
+        <div v-for="(produto, i) in vestModa" :key="i" class="col-6 home-box">
+          <div class="text-product">
+            <div class="img-container">
+              <img :src="produto.foto" height="180" width="180" alt="" />
             </div>
-            <div class="btn-group">
-              <button class="btn-edit">Editar</button>
-              <button class="btn-del">Deletar</button>
+            <div class="row products-container">
+              <small> <strong>Produto: </strong> {{ produto.produto }} </small>
+
+              <small><strong>Estoque: </strong> {{ produto.estoque }} </small>
+
+              <small><strong>Preço: </strong> {{ produto.preco }} </small>
+
+              <small><strong>Categoria: </strong> {{ produto.categorias[0].name }} </small>
             </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn-edit">Editar</button>
+            <button class="btn-del">Deletar</button>
           </div>
         </div>
       </div>
-      <template v-else>
-        <small class="velse">Não foi encontrado nem um produto</small>
-      </template>
     </div>
+    <template v-else>
+      <small class="velse">Não foi encontrado nem um produto</small>
+    </template>
   </div>
 </template>
 
@@ -174,5 +172,10 @@ export default {
 
 .products-container {
   margin-left: 20px;
+}
+
+.alinhamentoCentral {
+  display: flex;
+  justify-content: center;
 }
 </style>
